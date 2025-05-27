@@ -142,6 +142,33 @@ INSERT INTO tripulacion_vuelo (vuelo_id, empleado_id, rol) VALUES
 (16, 7, 'Piloto al mando del vuelo 16'),
 (19, 1, 'Piloto al mando del vuelo 19');
 
+
+INSERT INTO tipo_mantenimiento (nombre, descripcion, duracion_estimada_dias) VALUES
+('A-Check', 'Inspección básica, incluye chequeo de fluidos, frenos y luces.', 1),
+('B-Check', 'Inspección semestral, chequeo de sistemas eléctricos e hidráulicos.', 3),
+('C-Check', 'Inspección integral en hangar con desmontaje parcial.', 15),
+('D-Check', 'Mantenimiento mayor, incluye revisión completa y renovación estructural.', 60),
+('Correctivo', 'Reparación por fallas inesperadas o mal funcionamiento.', 5),
+('Preventivo', 'Revisión para evitar fallas, según fabricante.', 7),
+('No programado', 'Mantenimiento inmediato por reporte del piloto u evento crítico.', 2);
+
+INSERT INTO mantenimiento(aeronave_id, tipo, fecha_inicio, fecha_fin, observaciones) VALUES
+(1, 1, '2024-12-09', '2024-12-10', 'A-Check programado de rutina.'),
+(2, 2, '2025-01-09', '2025-01-12', 'B-Check semestral.'),
+(3, 3, '2025-03-17', '2025-04-01', 'Inspección general tipo C-Check.'),
+(4, 5, '2025-03-09', '2025-03-14', 'Mantenimiento correctivo por alerta del sistema hidráulico.'),
+(5, 4, '2016-02-19', '2016-04-19', 'Revisión estructural completa - D-Check.'),
+(6, 6, '2025-01-11', '2025-01-18', 'Mantenimiento preventivo previo a temporada alta.'),
+(7, 1, '2025-03-29', '2025-03-30', 'A-Check rápido en tránsito.'),
+(8, 7, '2024-10-03', '2024-10-05', 'No programado por reporte de vibración.'),
+(9, 2, '2025-04-17', '2025-04-20', 'B-Check previo a vuelos largos.'),
+(10, 3, '2025-01-15', '2025-01-30', 'Inspección C-Check completa de sistemas.'),
+(2, 1, '2025-05-29', NULL, 'A-Check rápido en tránsito.'),
+(5, 5, '2025-05-20', NULL, 'Mantenimiento correctivo por alerta del sistema hidráulico.'),
+(9, 7, '2025-05-27', NULL, 'No programado por reporte de vibración.');
+
+ 
+
 -- Inicializar contador_vuelos en pasajeros
 UPDATE pasajero p
 JOIN (

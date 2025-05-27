@@ -31,14 +31,31 @@ HAVING COUNT(*) >= 10;
 
 #3: 
 CREATE VIEW aeronaves_mantenimiento AS
-SELECT a.aeronave_id,
+SELECT DISTINCT a.aeronave_id,
 al.nombre,
 a.modelo,
 a.fecha_fabriacion,
 a.ultimo_mantenimiento,
 a.estado,
-DATE_ADD(CURDATE(), INTERVAL ROUND((RAND() * 29 + 1), 0) DAY) AS "fecha estimada de retorno"
+DATE_ADD(m.fecha_inicio, INTERVAL tm.duracion_estimada_dias DAY) AS "fecha estimada de retorno"
 FROM aeronave a 
 JOIN aerolinea al
 	USING(aerolinea_id)
+JOIN mantenimiento m
+	USING(aeronave_id)
+JOIN (
+	SELECT 
+	  m.aeronave_id,
+	  MAX(m.fecha_inicio) AS fecha_inicio
+	FROM 
+	  mantenimiento m
+	GROUP BY 
+	  m.aeronave_id
+) ult_man
+  ON m.aeronave_id = ult_man.aeronave_id 
+ AND m.fecha_inicio = ult_man.fecha_inicio
+JOIN tipo_mantenimiento tm
+	ON m.tipo = tm.tipo_mantenimiento_id
 WHERE a.estado = "Mantenimiento";
+
+

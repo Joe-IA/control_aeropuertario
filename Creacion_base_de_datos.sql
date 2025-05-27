@@ -112,3 +112,22 @@ CREATE TABLE pagos (
     metodo_pago ENUM('Tarjeta', 'Efectivo', 'Transferencia') NOT NULL,
     FOREIGN KEY (reservacion_id) REFERENCES reservacion(reservacion_id)
 );
+
+
+CREATE TABLE tipo_mantenimiento(
+    tipo_mantenimiento_id TINYINT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(30) NOT NULL,
+    descripcion text,
+    duracion_estimada_dias TINYINT NOT NULL
+);
+
+CREATE TABLE mantenimiento(
+    mantenimiento_id SMALLINT PRIMARY KEY AUTO_INCREMENT,
+    aeronave_id SMALLINT NOT NULL,
+    tipo TINYINT NOT NULL,
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE,
+    observaciones TEXT,
+    FOREIGN KEY(aeronave_id) REFERENCES aeronave(aeronave_id),
+    FOREIGN KEY(tipo) REFERENCES tipo_mantenimiento(tipo_mantenimiento_id)
+);
