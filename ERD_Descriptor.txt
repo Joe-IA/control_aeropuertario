@@ -1,4 +1,4 @@
-Table aerolinea{
+Table aerolinea {
   aerolinea_id SMALLINT [PK, INCREMENT]
   nombre VARCHAR(100) [NOT NULL]
   codigo_IATA CHAR(2) [NOT NULL]
@@ -7,19 +7,18 @@ Table aerolinea{
   sitio_web VARCHAR(255) [NOT NULL]
 }
 
-TABLE aeronave{
+Table aeronave {
   aeronave_id SMALLINT [PK, INCREMENT]
   aerolinea_id SMALLINT [REF: > aerolinea.aerolinea_id, NOT NULL]
   modelo VARCHAR(100) [NOT NULL]
-  capacidad_de_pasajeros SMALLINT [NOT NULL]
-  capacidad_carga DECIMCAL(10, 2) [NOT NULL]
-  fecha_fabricacion DATE [NOT NULL]
+  capacidad_pasajeros SMALLINT [NOT NULL]
+  capacidad_carga DECIMAL(10, 2) [NOT NULL]
+  fecha_fabriacion DATE [NOT NULL]
   ultimo_mantenimiento DATE [NOT NULL]
   estado ENUM("Activo", "Mantenimiento", "Inactivo") [NOT NULL]
 }
 
-
-TABLE ruta{
+Table ruta {
   ruta_id SMALLINT [PK, INCREMENT]
   aeropuerto_origen CHAR(3) [NOT NULL]
   aeropuerto_destino CHAR(3) [NOT NULL]
@@ -27,7 +26,7 @@ TABLE ruta{
   tiempo_estimado_min SMALLINT [NOT NULL]
 }
 
-TABLE vuelo{
+Table vuelo {
   vuelo_id INT [PK, INCREMENT]
   aerolinea_id SMALLINT [REF: > aerolinea.aerolinea_id, NOT NULL]
   ruta_id SMALLINT [REF: > ruta.ruta_id, NOT NULL]
@@ -37,11 +36,10 @@ TABLE vuelo{
   fecha_llegada_real TIMESTAMP
   puerta_embarque VARCHAR(5) [NOT NULL]
   estado ENUM("Programado", "En vuelo", "Aterrizado", "Cancelado", "Retrasado") [NOT NULL]
+  asientos_disponibles INT [DEFAULT: 0]
 }
 
-
-
-TABLE pasajero{
+Table pasajero {
   pasajero_id INT [PK, INCREMENT]
   pasaporte VARCHAR(15) [NOT NULL]
   nombre VARCHAR(50) [NOT NULL]
@@ -50,10 +48,11 @@ TABLE pasajero{
   nacionalidad VARCHAR(100) [NOT NULL]
   telefono VARCHAR(30) [NOT NULL]
   email VARCHAR(100) [NOT NULL]
-  programa_fidelidad VARCHAR(255) 
+  programa_fidelidad VARCHAR(255)
+  contador_vuelos INT [DEFAULT: 0]
 }
 
-TABLE tripulacion{
+Table tripulacion {
   empleado_id SMALLINT [PK, INCREMENT]
   aerolinea_id SMALLINT [REF: > aerolinea.aerolinea_id, NOT NULL]
   licencia VARCHAR(20) [NOT NULL]
@@ -64,10 +63,9 @@ TABLE tripulacion{
   horas_vuelo DEC(8, 2) [NOT NULL]
 }
 
-
-TABLE reservacion{
-  reservacion_id INT [PK]
-  vuelo_id INT [REF : > vuelo.vuelo_id, NOT NULL]
+Table reservacion {
+  reservacion_id INT [PK, INCREMENT]
+  vuelo_id INT [REF: > vuelo.vuelo_id, NOT NULL]
   pasajero_id INT [REF: > pasajero.pasajero_id, NOT NULL]
   clase ENUM("Primera", "Business", "Turista", "Premium") [NOT NULL]
   asiento VARCHAR(5) [NOT NULL]
@@ -77,10 +75,24 @@ TABLE reservacion{
   metodo_pago ENUM("Tarjeta", "Efectivo", "Transferencia") [NOT NULL]
 }
 
-
-TABLE tripulacion_vuelo{
+Table tripulacion_vuelo {
   vuelo_id INT [PK, REF: > vuelo.vuelo_id]
   empleado_id SMALLINT [PK, REF: > tripulacion.empleado_id]
   rol TEXT [NOT NULL]
 }
 
+Table notificaciones {
+  notificacion_id INT [PK, INCREMENT]
+  vuelo_id INT [REF: > vuelo.vuelo_id]
+  pasajero_id INT [REF: > pasajero.pasajero_id]
+  mensaje VARCHAR(255)
+  fecha_notificacion DATETIME
+}
+
+Table pagos {
+  pago_id INT [PK, INCREMENT]
+  reservacion_id INT [REF: > reservacion.reservacion_id, NOT NULL]
+  monto DECIMAL(8, 2) [NOT NULL]
+  fecha_pago TIMESTAMP [NOT NULL]
+  metodo_pago ENUM("Tarjeta", "Efectivo", "Transferencia") [NOT NULL]
+}

@@ -125,3 +125,15 @@ BEGIN
 END //
 
 DELIMITER ;
+
+-- 1. asignar_tripulacion_vuelo
+DELETE FROM tripulacion_vuelo WHERE vuelo_id = 1;
+CALL asignar_tripulacion_vuelo('2025-06-01 08:00:00', 8);
+SELECT * FROM tripulacion_vuelo WHERE vuelo_id = (SELECT vuelo_id FROM vuelo WHERE fecha_salida = '2025-06-01 08:00:00' AND ruta_id = 8);
+
+-- 2. checkin_automatico
+CALL checkin_automatico(1);
+SELECT * FROM reservacion WHERE vuelo_id = 1 AND estado = 'Utilizada';
+
+-- 3. estadisticas_puntualidad
+CALL estadisticas_puntualidad(2025, 5);

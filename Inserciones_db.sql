@@ -34,33 +34,33 @@ INSERT INTO ruta (aeropuerto_origen, aeropuerto_destino, distancia_km, tiempo_es
 ('GRU', 'BOG', 4300.00, 320),
 ('SYD', 'MEL', 713.00, 85);
 
-
-INSERT INTO vuelo (aerolinea_id, ruta_id, aeronave_id, fecha_salida, fecha_llegada_estimada, fecha_llegada_real, puerta_embarque, estado) VALUES
-(1, 8, 1, '2025-06-01 08:00:00', '2025-06-01 11:00:00', NULL, 'A1', 'Programado'),
-(2, 10, 2, '2025-06-01 09:30:00', '2025-06-01 13:00:00', NULL, 'B2', 'Programado'),
-(1, 3, 1, '2025-06-01 14:00:00', '2025-06-01 16:00:00', NULL, 'C3', 'Programado'),
-(3, 4, 3, '2025-05-30 12:00:00', '2025-05-30 15:00:00', '2025-05-30 15:10:00', 'D4', 'Aterrizado'),
-(7, 5, 9, '2025-05-31 18:00:00', '2025-05-31 21:00:00', '2025-05-31 21:45:00', 'E5', 'Retrasado'),
-(4, 2, 5, '2025-06-01 06:00:00', '2025-06-01 08:30:00', NULL, 'F1', 'En vuelo'),
-(5, 8, 2, '2025-06-02 11:00:00', '2025-06-02 14:00:00', NULL, 'A2', 'Programado'),
-(7, 1, 4, '2025-06-03 07:00:00', '2025-06-03 10:30:00', NULL, 'B3', 'Programado'),
-(10, 6, 9, '2025-06-04 13:00:00', '2025-06-04 16:00:00', NULL, 'C1', 'Cancelado'),
-(1, 5, 3, '2025-06-05 17:00:00', '2025-06-05 20:30:00', NULL, 'D2', 'Programado'),
-(1, 1, 1, '2025-05-25 08:00:00', '2025-05-25 10:30:00', '2025-05-25 10:25:00', 'A1', 'Aterrizado'),
-(2, 2, 2, '2025-05-25 13:15:00', '2025-05-25 15:45:00', NULL, 'B3', 'En vuelo'),
-(3, 3, 3, '2025-05-25 18:00:00', '2025-05-25 20:30:00', NULL, 'C2', 'Programado'),
-(4, 4, 4, '2025-06-03 07:00:00', '2025-06-03 09:30:00', NULL, 'D1', 'Programado'),
-(5, 5, 5, '2025-06-03 11:45:00', '2025-06-03 14:15:00', NULL, 'E4', 'Programado'),
-(6, 6, 6, '2025-06-03 17:20:00', '2025-06-03 19:50:00', NULL, 'F2', 'Programado'),
-(1, 2, 3, '2019-11-10 08:30:00', '2019-11-10 13:15:00', '2019-11-10 13:10:00','B12', 'Aterrizado'),
-(4, 1, 2, '2020-03-05 22:00:00', '2020-03-06 03:45:00', '2020-03-06 03:40:00', 'C3', 'Aterrizado');
+INSERT INTO vuelo (aerolinea_id, ruta_id, aeronave_id, fecha_salida, fecha_llegada_estimada, fecha_llegada_real, puerta_embarque, estado, asientos_disponibles) VALUES
+(1, 8, 1, '2025-06-01 08:00:00', '2025-06-01 11:00:00', NULL, 'A1', 'Programado', 160),
+(2, 10, 2, '2025-06-01 09:30:00', '2025-06-01 13:00:00', NULL, 'B2', 'Programado', 180),
+(1, 3, 1, '2025-06-01 14:00:00', '2025-06-01 16:00:00', NULL, 'C3', 'Programado', 160),
+(3, 4, 3, '2025-05-30 12:00:00', '2025-05-30 15:00:00', '2025-05-30 15:10:00', 'D4', 'Aterrizado', 396),
+(7, 5, 9, '2025-05-31 18:00:00', '2025-05-31 21:00:00', '2025-05-31 21:45:00', 'E5', 'Retrasado', 178),
+(4, 2, 5, '2025-06-01 06:00:00', '2025-06-01 08:30:00', NULL, 'F1', 'En vuelo', 296),
+(5, 8, 2, '2025-06-02 11:00:00', '2025-06-02 14:00:00', NULL, 'A2', 'Programado', 180),
+(7, 1, 4, '2025-06-03 07:00:00', '2025-06-03 10:30:00', NULL, 'B3', 'Programado', 314),
+(10, 6, 9, '2025-06-04 13:00:00', '2025-06-04 16:00:00', NULL, 'C1', 'Cancelado', 178),
+(1, 5, 3, '2025-06-05 17:00:00', '2025-06-05 20:30:00', NULL, 'D2', 'Programado', 396),
+(1, 1, 1, '2025-05-25 08:00:00', '2025-05-25 10:30:00', '2025-05-25 10:25:00', 'A1', 'Aterrizado', 160),
+(2, 2, 2, '2025-05-25 13:15:00', '2025-05-25 15:45:00', NULL, 'B3', 'En vuelo', 180),
+(3, 3, 3, '2025-05-25 18:00:00', '2025-05-25 20:30:00', NULL, 'C2', 'Programado', 396),
+(4, 4, 4, '2025-06-03 07:00:00', '2025-06-03 09:30:00', NULL, 'D1', 'Programado', 314),
+(5, 5, 5, '2025-06-03 11:45:00', '2025-06-03 14:15:00', NULL, 'E4', 'Programado', 296),
+(6, 6, 6, '2025-06-03 17:20:00', '2025-06-03 19:50:00', NULL, 'F2', 'Programado', 555),
+(1, 2, 3, '2025-05-24 08:30:00', '2025-05-24 11:00:00', '2025-05-24 11:10:00', 'B12', 'Aterrizado', 396),
+(4, 1, 2, '2025-05-23 22:00:00', '2025-05-24 00:30:00', '2025-05-24 00:40:00', 'C3', 'Aterrizado', 180),
+(1, 8, 1, '2025-05-26 19:00:00', '2025-05-26 21:30:00', NULL, 'A3', 'Programado', 160);
 
 INSERT INTO pasajero (pasaporte, nombre, apellido, fecha_nacimiento, nacionalidad, telefono, email, programa_fidelidad) VALUES
 ('P1234567A', 'Carlos', 'Ramírez', '1985-04-12', 'México', '+5215551234567', 'carlos.ramirez@example.com', 'SkyMiles'),
 ('P2345678B', 'Ana', 'Gómez', '1990-08-25', 'Colombia', '+573013456789', 'ana.gomez@example.com', 'LifeMiles'),
 ('P3456789C', 'Lucía', 'Martínez', '1978-01-30', 'Argentina', '+5491122334455', 'lucia.martinez@example.com', NULL),
 ('P4567890D', 'Juan', 'Pérez', '1995-11-05', 'España', '+34666777888', 'juan.perez@example.es', 'Iberia Plus'),
-('P5678901E', 'Sofía', 'Torres', '1988-06-14', 'Chile', '+56987654321', 'sofia.torres@example.cl', "Flying bird"),
+('P5678901E', 'Sofía', 'Torres', '1988-06-14', 'Chile', '+56987654321', 'sofia.torres@example.cl', 'Flying bird'),
 ('P6789012F', 'Mateo', 'Díaz', '2000-03-21', 'Perú', '+519987654321', 'mateo.diaz@example.pe', 'LATAM Pass'),
 ('P7890123G', 'Valentina', 'Morales', '1992-09-10', 'Uruguay', '+59891234567', 'valentina.morales@example.uy', NULL),
 ('P8901234H', 'Sebastián', 'Herrera', '1983-12-03', 'Venezuela', '+584141234567', 'sebastian.herrera@example.ve', 'AAdvantage'),
@@ -90,36 +90,36 @@ INSERT INTO reservacion (vuelo_id, pasajero_id, clase, asiento, fecha_reservacio
 (8, 8, 'Turista', '18B', '2025-05-27 12:00:00', 'Confirmada', 200.00, 'Tarjeta'),
 (9, 9, 'Primera', '1B', '2025-05-28 16:40:00', 'Utilizada', 975.00, 'Tarjeta'),
 (10, 10, 'Premium', '5C', '2025-05-29 17:55:00', 'Confirmada', 360.00, 'Transferencia'),
-(1, 7, 'Turista', '13A', NOW(), 'Confirmada', 150.00, 'Tarjeta'),
-(2, 7, 'Turista', '14B', NOW(), 'En espera', 160.00, 'Transferencia'),
-(3, 7, 'Business', '4C', NOW(), 'Cancelada', 400.00, 'Efectivo'),
-(4, 7, 'Primera', '1F', NOW(), 'Confirmada', 600.00, 'Tarjeta'),
-(5, 7, 'Turista', '18B', NOW(), 'En espera', 155.00, 'Tarjeta'),
-(6, 7, 'Turista', '16F', NOW(), 'Confirmada', 170.00, 'Efectivo'),
-(7, 7, 'Premium', '5D', NOW(), 'Confirmada', 320.00, 'Transferencia'),
-(8, 7, 'Business', '3F', NOW(), 'Cancelada', 410.00, 'Tarjeta'),
-(9, 7, 'Turista', '21C', NOW(), 'Confirmada', 140.00, 'Efectivo'),
-(10, 7, 'Primera', '1E', NOW(), 'En espera', 620.00, 'Tarjeta'), 
-(1, 5, 'Turista', '11A', NOW(), 'Utilizada', 150.00, 'Tarjeta'),
-(2, 5, 'Business', '2C', NOW(), 'Utilizada', 380.00, 'Transferencia'),
-(3, 5, 'Premium', '6F', NOW(), 'Utilizada', 290.00, 'Tarjeta'),
-(4, 5, 'Primera', '1C', NOW(), 'Utilizada', 600.00, 'Efectivo'),
-(5, 5, 'Turista', '15B', NOW(), 'Utilizada', 160.00, 'Tarjeta'),
-(6, 5, 'Business', '3D', NOW(), 'Utilizada', 390.00, 'Transferencia'),
-(7, 5, 'Premium', '7A', NOW(), 'Utilizada', 310.00, 'Tarjeta'),
-(8, 5, 'Turista', '17E', NOW(), 'Utilizada', 145.00, 'Efectivo'),
-(9, 5, 'Business', '2B', NOW(), 'Utilizada', 395.00, 'Tarjeta'),
-(10, 5, 'Primera', '1D', NOW(), 'Utilizada', 615.00, 'Transferencia'),
-(1, 2, 'Turista', '12A', NOW(), 'Utilizada', 150.00, 'Tarjeta'),
-(2, 2, 'Turista', '14C', NOW(), 'Utilizada', 160.00, 'Tarjeta'),
-(3, 2, 'Business', '3B', NOW(), 'Utilizada', 400.00, 'Transferencia'),
-(4, 2, 'Primera', '1A', NOW(), 'Utilizada', 600.00, 'Efectivo'),
-(5, 2, 'Turista', '18D', NOW(), 'Utilizada', 155.00, 'Tarjeta'),
-(6, 2, 'Turista', '16E', NOW(), 'Utilizada', 170.00, 'Tarjeta'),
-(7, 2, 'Premium', '5C', NOW(), 'Utilizada', 320.00, 'Transferencia'),
-(8, 2, 'Business', '2D', NOW(), 'Utilizada', 410.00, 'Efectivo'),
-(9, 2, 'Turista', '20F', NOW(), 'Utilizada', 140.00, 'Tarjeta'),
-(10, 2, 'Primera', '1B', NOW(), 'Utilizada', 620.00, 'Tarjeta');
+(1, 7, 'Turista', '13A', '2025-05-26 19:00:00', 'Confirmada', 150.00, 'Tarjeta'),
+(2, 7, 'Turista', '14B', '2025-05-26 19:00:00', 'En espera', 160.00, 'Transferencia'),
+(3, 7, 'Business', '4C', '2025-05-26 19:00:00', 'Cancelada', 400.00, 'Efectivo'),
+(4, 7, 'Primera', '1F', '2025-05-26 19:00:00', 'Confirmada', 600.00, 'Tarjeta'),
+(5, 7, 'Turista', '18B', '2025-05-26 19:00:00', 'En espera', 155.00, 'Tarjeta'),
+(6, 7, 'Turista', '16F', '2025-05-26 19:00:00', 'Confirmada', 170.00, 'Efectivo'),
+(7, 7, 'Premium', '5D', '2025-05-26 19:00:00', 'Confirmada', 320.00, 'Transferencia'),
+(8, 7, 'Business', '3F', '2025-05-26 19:00:00', 'Cancelada', 410.00, 'Tarjeta'),
+(9, 7, 'Turista', '21C', '2025-05-26 19:00:00', 'Confirmada', 140.00, 'Efectivo'),
+(10, 7, 'Primera', '1E', '2025-05-26 19:00:00', 'En espera', 620.00, 'Tarjeta'),
+(1, 5, 'Turista', '11A', '2025-05-26 19:00:00', 'Utilizada', 150.00, 'Tarjeta'),
+(2, 5, 'Business', '2C', '2025-05-26 19:00:00', 'Utilizada', 380.00, 'Transferencia'),
+(3, 5, 'Premium', '6F', '2025-05-26 19:00:00', 'Utilizada', 290.00, 'Tarjeta'),
+(4, 5, 'Primera', '1C', '2025-05-26 19:00:00', 'Utilizada', 600.00, 'Efectivo'),
+(5, 5, 'Turista', '15B', '2025-05-26 19:00:00', 'Utilizada', 160.00, 'Tarjeta'),
+(6, 5, 'Business', '3D', '2025-05-26 19:00:00', 'Utilizada', 390.00, 'Transferencia'),
+(7, 5, 'Premium', '7A', '2025-05-26 19:00:00', 'Utilizada', 310.00, 'Tarjeta'),
+(8, 5, 'Turista', '17E', '2025-05-26 19:00:00', 'Utilizada', 145.00, 'Efectivo'),
+(9, 5, 'Business', '2B', '2025-05-26 19:00:00', 'Utilizada', 395.00, 'Tarjeta'),
+(10, 5, 'Primera', '1D', '2025-05-26 19:00:00', 'Utilizada', 615.00, 'Transferencia'),
+(1, 2, 'Turista', '12B', '2025-05-26 19:00:00', 'Utilizada', 150.00, 'Tarjeta'),
+(2, 2, 'Turista', '14C', '2025-05-26 19:00:00', 'Utilizada', 160.00, 'Tarjeta'),
+(3, 2, 'Business', '3B', '2025-05-26 19:00:00', 'Utilizada', 400.00, 'Transferencia'),
+(4, 2, 'Primera', '1A', '2025-05-26 19:00:00', 'Utilizada', 600.00, 'Efectivo'),
+(5, 2, 'Turista', '18D', '2025-05-26 19:00:00', 'Utilizada', 155.00, 'Tarjeta'),
+(6, 2, 'Turista', '16E', '2025-05-26 19:00:00', 'Utilizada', 170.00, 'Tarjeta'),
+(7, 2, 'Premium', '5C', '2025-05-26 19:00:00', 'Utilizada', 320.00, 'Transferencia'),
+(8, 2, 'Business', '2D', '2025-05-26 19:00:00', 'Utilizada', 410.00, 'Efectivo'),
+(9, 2, 'Turista', '20F', '2025-05-26 19:00:00', 'Utilizada', 140.00, 'Tarjeta'),
+(10, 2, 'Primera', '1B', '2025-05-26 19:00:00', 'Utilizada', 620.00, 'Tarjeta');
 
 
 INSERT INTO tripulacion_vuelo (vuelo_id, empleado_id, rol) VALUES
@@ -128,11 +128,26 @@ INSERT INTO tripulacion_vuelo (vuelo_id, empleado_id, rol) VALUES
 (2, 3, 'Copiloto encargado de navegación'),
 (2, 4, 'Azafata a cargo del servicio de bebidas'),
 (3, 5, 'Ingeniero responsable del control técnico'),
+(3, 1, 'Piloto al mando del vuelo 3'),
 (4, 6, 'Jefe de cabina supervisando seguridad del vuelo'),
 (5, 7, 'Piloto al mando del vuelo 5'),
 (6, 8, 'Azafata de cabina delantera'),
+(6, 2, 'Azafata responsable de cabina delantera'),
 (7, 9, 'Copiloto a cargo del contacto con torre'),
-(8, 10, 'Ingeniero en verificación de sistemas prevuelo');
+(7, 3, 'Copiloto encargado de navegación'),
+(8, 10, 'Ingeniero en verificación de sistemas prevuelo'),
+(8, 4, 'Azafata a cargo del servicio de bebidas'),
+(14, 5, 'Ingeniero responsable del control técnico'),
+(15, 6, 'Jefe de cabina supervisando seguridad del vuelo'),
+(16, 7, 'Piloto al mando del vuelo 16'),
+(19, 1, 'Piloto al mando del vuelo 19');
 
-
-
+-- Inicializar contador_vuelos en pasajeros
+UPDATE pasajero p
+JOIN (
+    SELECT pasajero_id, COUNT(*) as vuelos_utilizados
+    FROM reservacion
+    WHERE estado = 'Utilizada'
+    GROUP BY pasajero_id
+) r ON p.pasajero_id = r.pasajero_id
+SET p.contador_vuelos = r.vuelos_utilizados;

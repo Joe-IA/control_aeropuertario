@@ -40,6 +40,7 @@ CREATE TABLE vuelo(
     fecha_llegada_real TIMESTAMP,
     puerta_embarque VARCHAR(5) NOT NULL,
     estado ENUM("Programado", "En vuelo", "Aterrizado", "Cancelado", "Retrasado") NOT NULL,
+    asientos_disponibles INT DEFAULT 0,
     FOREIGN KEY(aeronave_id) REFERENCES aeronave(aeronave_id),
     FOREIGN KEY(ruta_id) REFERENCES ruta(ruta_id),
     FOREIGN KEY(aerolinea_id) REFERENCES aerolinea(aerolinea_id)
@@ -54,7 +55,8 @@ CREATE TABLE pasajero(
     nacionalidad VARCHAR(100) NOT NULL,
     telefono VARCHAR(30) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    programa_fidelidad VARCHAR(255)
+    programa_fidelidad VARCHAR(255),
+    contador_vuelos INT DEFAULT 0
 );
 
 CREATE TABLE tripulacion(
@@ -90,4 +92,23 @@ CREATE TABLE tripulacion_vuelo(
     FOREIGN KEY(vuelo_id) REFERENCES vuelo(vuelo_id),
     FOREIGN KEY(empleado_id) REFERENCES tripulacion(empleado_id),
     PRIMARY KEY(vuelo_id, empleado_id)
+);
+
+CREATE TABLE notificaciones (
+    notificacion_id INT AUTO_INCREMENT PRIMARY KEY,
+    vuelo_id INT,
+    pasajero_id INT,
+    mensaje VARCHAR(255),
+    fecha_notificacion DATETIME,
+    FOREIGN KEY (vuelo_id) REFERENCES vuelo(vuelo_id),
+    FOREIGN KEY (pasajero_id) REFERENCES pasajero(pasajero_id)
+);
+
+CREATE TABLE pagos (
+    pago_id INT PRIMARY KEY AUTO_INCREMENT,
+    reservacion_id INT NOT NULL,
+    monto DECIMAL(8, 2) NOT NULL,
+    fecha_pago TIMESTAMP NOT NULL,
+    metodo_pago ENUM('Tarjeta', 'Efectivo', 'Transferencia') NOT NULL,
+    FOREIGN KEY (reservacion_id) REFERENCES reservacion(reservacion_id)
 );
