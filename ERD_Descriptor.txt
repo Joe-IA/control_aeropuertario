@@ -96,3 +96,19 @@ Table pagos {
   fecha_pago TIMESTAMP [NOT NULL]
   metodo_pago ENUM("Tarjeta", "Efectivo", "Transferencia") [NOT NULL]
 }
+
+TABLE tipo_mantenamiento{
+  tipo_mantenimiento_id TINYINT [PK, INCREMENT]
+  nombre VARCHAR(30) [NOT NULL]
+  descripcion TEXT 
+  duracion_estimada_dias TINYINT [NOT NULL]
+}
+
+TABLE mantenimiento{
+  mantenimiento_id SMALLINT [PK, INCREMENT]
+  aeronave_id SMALLINT [NOT NULL, REF: > aeronave.aerolinea_id]
+  tipo TINYINT [NOT NULL, REF: > tipo_mantenamiento.tipo_mantenimiento_id]
+  fecha_inicio DATE [NOT NULL]
+  fecha_fin DATE
+  observaciones TEXT 
+}
